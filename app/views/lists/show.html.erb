@@ -1,0 +1,14 @@
+<h1><%= @list.name %></h1>
+<%= link_to 'Back to Lists', lists_path %>
+<h2>Bookmarks</h2>
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li>
+      <%= bookmark.movie.title %> - <%= bookmark.comment %>
+      <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Add a new bookmark</h2>
+<%= render 'bookmarks/form', list: @list, bookmark: @bookmark %>
