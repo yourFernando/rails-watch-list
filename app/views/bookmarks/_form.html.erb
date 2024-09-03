@@ -1,13 +1,11 @@
-<%= form_with model: [list, bookmark], local: true do |form| %>
+<%= simple_form_for [list, bookmark], html: { local: true } do |f| %>
   <div>
-    <%= form.label :movie_id, 'Movie' %>
-    <%= form.collection_select :movie_id, Movie.all, :id, :title %>
+    <%= f.input :movie_id, collection: Movie.all, label_method: :title, value_method: :id, label: 'Movie' %>
   </div>
   <div>
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= f.input :comment, as: :text %>
   </div>
   <div>
-    <%= form.submit 'Add Bookmark' %>
+    <%= f.button :submit, 'Add Bookmark' %>
   </div>
 <% end %>
